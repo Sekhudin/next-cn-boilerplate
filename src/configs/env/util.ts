@@ -1,11 +1,12 @@
 import * as path from "path";
 import { match } from "ts-pattern";
+import type { UnknownPattern } from "ts-pattern/types";
 
 export const env = (environment: string | undefined, defaultValue?: string) => {
   return environment?.trim() || defaultValue?.trim() || "";
 };
 
-export const isMatch = (value: any, expectedValue: any): boolean => {
+export const isMatch = (value: unknown, expectedValue: UnknownPattern): boolean => {
   return match(value)
     .with(expectedValue, () => true)
     .otherwise(() => false);
