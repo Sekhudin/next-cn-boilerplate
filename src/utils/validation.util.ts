@@ -3,7 +3,7 @@ import type { StandardSchemaV1, ErrorMessage } from "src/types/validation.type";
 
 export * as z from "zod";
 export * from "./base.util";
-export * as zz from "./zod-schema/custom-schema.util";
+export * as zz from "./zod-schema/custom.schema";
 export type * from "src/types/validation.type";
 
 export const createSchema = <T extends z.ZodType<any, any, any>>(
