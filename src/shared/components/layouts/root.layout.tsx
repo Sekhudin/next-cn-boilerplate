@@ -7,7 +7,9 @@ import "src/shared/styles/globals.css";
 const Layout = ({ children }: LayoutProps) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geist.variable} ${geistMono.variable} antialiased min-h-dvh w-dvw overflow-x-hidden`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
