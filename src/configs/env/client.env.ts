@@ -1,3 +1,3 @@
 import { env } from "./util";
 
-export const SECRET_KEY = env(process.env.NEXT_PUBLIC_SECRET_KEY, "secret key");
+export const APP_NAME = env(process.env.NEXT_PUBLIC_APP_NAME, "app-name");
