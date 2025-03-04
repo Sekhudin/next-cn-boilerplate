@@ -6,7 +6,7 @@ import { Button } from "./button";
 import { Input } from "./input";
 import { cn } from "src/utils/common";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 const PasswordInput = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
   const [showPassword, setShowPassword] = useState(false);
   const disabled = props.value === "" || props.value === undefined || props.disabled;
