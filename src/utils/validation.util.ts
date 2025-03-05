@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import z from "zod";
 import { catchInvalidSchemaAsWarning } from "./exceptions/schema.exception";
 import type { StandardSchemaV1, ErrorMessage } from "src/types/validation.type";
