@@ -1,20 +1,13 @@
 import type { AxiosInstance } from "axios";
+import { ClientService } from "src/shared/core/client.service";
 import type { SignUpDto } from "../dto/signup.dto";
 import type { SignInDto } from "../dto/signin.dto";
 import * as backend from "src/shared/clients/backend.client";
 
-class AuthService {
-  public client: AxiosInstance;
-  static instance: AuthService;
-  static getInstance() {
-    if (!this.instance) {
-      AuthService.instance = new AuthService(backend.client);
-    }
-    return AuthService.instance;
-  }
-
-  constructor(client: AxiosInstance) {
-    this.client = client;
+class AuthService extends ClientService {
+  public readonly client: AxiosInstance = backend.client;
+  constructor() {
+    super();
   }
 
   async signUp(body: SignUpDto) {
