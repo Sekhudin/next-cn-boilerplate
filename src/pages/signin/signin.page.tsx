@@ -8,14 +8,14 @@ const Page = () => {
   return (
     <React.Fragment>
       <div className="flex justify-center gap-2 md:justify-start">
-        <a href="#" className="flex items-center gap-2 font-medium">
+        <a href="/" className="flex items-center gap-2 font-medium">
           <div className="flex h-6 w-6 items-center justify-center text-primary-foreground">
             <Avatar className="size-8">
               <AvatarImage src={Favicon.src} />
               <AvatarFallback>KB</AvatarFallback>
             </Avatar>
           </div>
-          <span className="first-letter:uppercase font-medium">{env.client.APP_NAME}</span>
+          <span className="first-letter:uppercase font-medium">{env.app.name}</span>
         </a>
       </div>
       <div className="flex flex-1 items-center justify-center">
