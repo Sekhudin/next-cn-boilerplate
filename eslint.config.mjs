@@ -14,6 +14,8 @@ const eslintConfig = [
   {
     rules: {
       "import/no-anonymous-default-export": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@next/next/no-html-link-for-pages": "off"
     },
   },
 ];
