@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
           disableTransitionOnChange
         >
           {children}
-          <CommonToaster />
+          <CommonToaster position="top-right" />
         </ThemeProvider>
       </body>
     </html>
