@@ -1,3 +1,3 @@
-import Layout from "src/shared/components/core/restricted.layout";
+import Layout from "src/pages/restricted.layout";
 
 export default Layout;
