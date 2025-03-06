@@ -2,7 +2,6 @@ import { create } from "zustand";
 import * as env from "src/configs/env.config";
 
 interface AuthStore {
-  token: string;
   setToken: (token: string) => void;
   clearToken: () => void;
 }
@@ -19,14 +18,11 @@ export const clearToken = () => {
   localStorage.setItem(env.client.ACCESS_TOKEN_NAME, "");
 };
 
-export const useAuthStore = create<AuthStore>()((set) => ({
-  token: "",
+export const useAuthStore = create<AuthStore>()(() => ({
   setToken: (token) => {
     setToken(token);
-    set({ token });
   },
   clearToken: () => {
     clearToken();
-    set({ token: "" });
   },
 }));
