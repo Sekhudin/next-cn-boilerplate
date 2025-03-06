@@ -6,7 +6,7 @@ import { PasswordInput } from "src/shared/ui/password-input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "src/shared/ui/form";
 import { authService } from "../services/auth.service";
 import { signUpSchema, signUpDefault, SignUpDto } from "../dto/signup.dto";
-import { schemaResolver, catchExeption } from "src/utils/form.util";
+import { schemaResolver, createOnSubmit } from "src/utils/form.util";
 import { cn, Props } from "src/utils/common";
 import { Anchor } from "src/shared/ui/anchor";
 
@@ -16,16 +16,12 @@ const SignUpForm = ({ className }: Props) => {
     defaultValues: signUpDefault,
   });
 
-  const onSubmit = async (values: SignUpDto) => {
-    try {
-      const payload = await authService.signUp(values);
-      if (payload) {
-        window.location.href = "/signin";
-      }
-    } catch (error) {
-      catchExeption(error);
+  const onSubmit = createOnSubmit<SignUpDto>(async (values) => {
+    const payload = await authService.signUp(values);
+    if (payload) {
+      window.location.href = "/signin";
     }
-  };
+  });
 
   return (
     <Form {...form}>
@@ -91,7 +87,9 @@ const SignUpForm = ({ className }: Props) => {
           )}
         />
 
-        <Button className="w-full" type="submit">Sign Up</Button>
+        <Button className="w-full" type="submit">
+          Sign Up
+        </Button>
 
         <div className="text-center text-sm">
           Already have an account? <Anchor href="/signin">Sign in</Anchor>

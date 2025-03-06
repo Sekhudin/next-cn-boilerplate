@@ -7,7 +7,7 @@ import { PasswordInput } from "src/shared/ui/password-input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "src/shared/ui/form";
 import { authService } from "../services/auth.service";
 import { signInSchema, signInDefault, SignInDto } from "../dto/signin.dto";
-import { schemaResolver, catchExeption } from "src/utils/form.util";
+import { schemaResolver, createOnSubmit } from "src/utils/form.util";
 import { cn, Props } from "src/utils/common";
 
 const SignInForm = ({ className }: Props) => {
@@ -16,16 +16,12 @@ const SignInForm = ({ className }: Props) => {
     defaultValues: signInDefault,
   });
 
-  const onSubmit = async (values: SignInDto) => {
-    try {
-      const payload = await authService.signIn(values);
-      if (payload) {
-        window.location.href = "/dashboard";
-      }
-    } catch (error) {
-      catchExeption(error);
+  const onSubmit = createOnSubmit<SignInDto>(async (values) => {
+    const payload = await authService.signIn(values);
+    if (payload) {
+      window.location.href = "/dashboard";
     }
-  };
+  });
 
   return (
     <Form {...form}>
