@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, isAxiosError } from "axios";
 import { isMatch } from "src/utils/base.util";
-import { catchExeption } from "src/utils/exceptions/common.exception";
+import { catchException } from "src/utils/exceptions/common.exception";
 import * as authStore from "src/stores/auth.store";
 import * as env from "src/configs/env.config";
 
@@ -38,7 +38,7 @@ const responseOnReject = async (error: any) => {
     ) {
       window.location.href = "/signin";
       setTimeout(() => {
-        catchExeption(error, { description: "Session expired. Please log in again!" });
+        catchException(error, { description: "Session expired. Please log in again!" });
       }, 1000);
     }
   }
