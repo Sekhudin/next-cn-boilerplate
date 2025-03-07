@@ -2,7 +2,6 @@ import React from "react";
 
 const SIDEBAR_MIN_WIDTH = 320;
 export const useDashboardWidth = () => {
-  const ref = React.useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = React.useState(false);
   const [width, setWidth] = React.useState(SIDEBAR_MIN_WIDTH);
 
@@ -24,8 +23,9 @@ export const useDashboardWidth = () => {
     [isResizing],
   );
 
-  // React.useEffect(() => {
-  //   document.documentElement.style.setProperty("--sidebar-width", `${width}px`);
-  // }, [width]);
-  return { ref, width, onMouseDown, onMouseUp, onMouseMove };
+  const styleVarCSS: React.CSSProperties = {
+    "--sidebar-width": `${width}px`,
+  } as React.CSSProperties;
+
+  return { width, styleVarCSS, onMouseDown, onMouseUp, onMouseMove };
 };
