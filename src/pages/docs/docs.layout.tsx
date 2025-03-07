@@ -16,7 +16,7 @@ type Link = Record<"name" | "href", string>;
 const links: Link[] = [{ name: "dashboard", href: "/dashboard" }];
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <CommonLayout className="flex flex-col items-center bg-muted">
+    <CommonLayout className="flex flex-col items-center bg-sidebar">
       <div className="sticky w-full flex items-center gap-x-4 top-0 px-4 md:px-16 py-4 border-b bg-background z-50">
         <a href="/" className="flex items-center gap-2 font-medium">
           <div className="flex h-6 w-6 items-center justify-center text-primary-foreground">
