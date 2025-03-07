@@ -1,11 +1,7 @@
-import CommonContainer from "src/shared/components/containers/common.container";
+import React from "react";
 
 const Page = () => {
-  return (
-    <CommonContainer>
-      Dashboard content
-    </CommonContainer>
-  );
+  return <React.Fragment>Dashboard content</React.Fragment>;
 };
 
 export default Page;

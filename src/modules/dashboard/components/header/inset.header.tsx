@@ -28,7 +28,7 @@ const DashboardInsetHeader = ({ className }: Props) => {
   return (
     <header
       className={cn(
-        `flex sticky z-50 top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4 lg:px-8`,
+        `w-full flex sticky z-50 top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4 lg:px-8`,
         className,
       )}
     >

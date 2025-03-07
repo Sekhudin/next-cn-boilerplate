@@ -2,11 +2,7 @@ import DashboardComponent from "src/modules/dashboard/components/dashboard.compo
 import type { LayoutProps } from "src/types/global.type";
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <div className="">
-      <DashboardComponent>{children}</DashboardComponent>
-    </div>
-  );
+  return <DashboardComponent>{children}</DashboardComponent>;
 };
 
 export default Layout;
