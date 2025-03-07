@@ -2,7 +2,7 @@ import { toast, type ExternalToast } from "sonner";
 import { isAxiosError } from "axios";
 import type { ToastNotification } from "src/types/global.type";
 
-export const catchExeption = (error: unknown, customData?: ExternalToast) => {
+export const catchException = (error: unknown, customData?: ExternalToast) => {
   const notification: ToastNotification = {
     level: "error",
     title: "Failed",
