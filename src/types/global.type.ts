@@ -1,5 +1,6 @@
 import type React from "react";
 import type { ExternalToast } from "sonner";
+import type { LucideIcon } from "lucide-react";
 import type { Metadata, ResolvingMetadata } from "next";
 import type { NextFont, NextFontWithVariable } from "next/dist/compiled/@next/font";
 
@@ -33,3 +34,18 @@ export type ToastNotification = {
   title: ToastTitle;
   data?: ExternalToast;
 };
+
+export type RoleKey = "user" | "developer";
+export type Role = Record<RoleKey, RoleKey>;
+
+export type SidebarGroupMenu = {
+  id?: string;
+  title: string;
+  icon?: LucideIcon;
+  url?: string;
+  isActive?: boolean;
+  items?: (Required<
+    Omit<SidebarGroupMenu[number], "id" | "icon" | "isActive" | "items" | "url">
+  > &
+    Pick<SidebarGroupMenu[number], "id" | "items" | "url" | "icon">)[];
+}[];

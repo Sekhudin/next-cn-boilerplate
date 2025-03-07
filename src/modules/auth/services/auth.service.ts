@@ -17,6 +17,10 @@ class AuthService extends ClientService {
   async signIn(body: SignInDto) {
     return await this.client.post("/signin", body);
   }
+
+  async signOut() {
+    return await this.client.get("/signout");
+  }
 }
 
 export const authService = AuthService.getInstance();
