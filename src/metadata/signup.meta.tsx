@@ -1,4 +1,4 @@
-import { initMetadata } from "src/utils/metadata.util";
+import { initMetadata } from "src/utils/metadata";
 import * as env from "src/configs/env.config";
 
 export const metadata = initMetadata({
