@@ -1,3 +1,3 @@
-import Page from "src/pages/main/main.page";
+import Page from "src/screens/main/main.page";
 
 export default Page;

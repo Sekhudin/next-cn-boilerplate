@@ -1,3 +1,3 @@
-import Page from "src/pages/signup/signup.page";
+import Page from "src/screens/signup/signup.page";
 
 export default Page;

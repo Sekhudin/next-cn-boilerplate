@@ -1,3 +1,3 @@
-import Page from "src/pages/dashboard/dashboard.page";
+import Page from "src/screens/dashboard/dashboard.page";
 
 export default Page;

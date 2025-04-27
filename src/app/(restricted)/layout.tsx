@@ -1,3 +1,3 @@
-import Layout from "src/pages/restricted.layout";
+import Layout from "src/screens/restricted.layout";
 
 export default Layout;
