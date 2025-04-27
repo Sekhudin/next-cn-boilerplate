@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, isAxiosError } from "axios";
-import { isMatch } from "src/utils/base.util";
-import { catchException } from "src/utils/exceptions/common.exception";
+import { isMatch } from "src/utils/base";
+import { catchException } from "src/utils/exception";
 import * as authStore from "src/stores/auth.store";
 import * as env from "src/configs/env.config";
 

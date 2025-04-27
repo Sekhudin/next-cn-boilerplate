@@ -1,8 +1,8 @@
 import React from "react";
-import { catchException } from "src/utils/exceptions/common.exception";
+import { catchException } from "src/utils/exception";
 
 type AsyncMethod = () => Promise<void>;
-function useAsync(asyncMethod: AsyncMethod) {
+export const useAsync = (asyncMethod: AsyncMethod) => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const handler = React.useCallback(async () => {
     try {
@@ -16,6 +16,4 @@ function useAsync(asyncMethod: AsyncMethod) {
   }, [asyncMethod]);
 
   return { handler, loading };
-}
-
-export default useAsync;
+};

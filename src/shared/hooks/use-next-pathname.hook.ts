@@ -1,6 +1,6 @@
 import React from "react";
 import { usePathname } from "next/navigation";
-import { isNotMatch, withDefault } from "src/utils/base.util";
+import { isNotMatch, withDefault } from "src/utils/base";
 
 export const useNextPathname = () => {
   const value = usePathname();

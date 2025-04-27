@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 
-export abstract class ClientService {
+export abstract class BaseService {
   private static instance: any;
   public abstract readonly client: AxiosInstance;
 
