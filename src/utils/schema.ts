@@ -1,14 +1,10 @@
 import z from "zod";
 
-export const requiredString = (field: string) => {
-  return z.string().trim().min(1, `${field} can't be empty!`);
-};
-export const email = () => z.string().trim().toLowerCase().email();
-
-export const username = () => requiredString("username").toLowerCase();
-export const password = () => requiredString("password");
-
-export const superRefineShouldMatch =
+export const string = (field: string) => z.string().trim().min(1, `${field} can't be empty!`);
+export const email = () => z.string().email();
+export const username = () => string("username");
+export const password = () => string("password");
+export const refineMatch =
   (field: string, expectedField: string, opts?: { message: string }) =>
   (value: Record<string, any>, ctx: z.RefinementCtx) => {
     console.log(value);

@@ -1,5 +1,6 @@
-import { toast, type ExternalToast } from "sonner";
+import { ZodError } from "zod";
 import { isAxiosError } from "axios";
+import { toast, ExternalToast } from "sonner";
 import type { ToastNotification } from "src/types/global.type";
 
 export const catchException = (error: unknown, customData?: ExternalToast) => {
@@ -21,10 +22,11 @@ export const catchException = (error: unknown, customData?: ExternalToast) => {
       };
     }
   }
+
   return toast.error(notification.title, customData || notification.data);
 };
 
-export const catchExeptionAsWarning = (error: unknown, customData?: ExternalToast) => {
+export const catchExceptionAsWarning = (error: unknown, customData?: ExternalToast) => {
   const notification: ToastNotification = {
     level: "warning",
     title: "Failed",
@@ -43,5 +45,36 @@ export const catchExeptionAsWarning = (error: unknown, customData?: ExternalToas
       };
     }
   }
+
+  if (error instanceof ZodError) {
+    notification.data = {
+      ...notification.data,
+      description: error.issues[0].message.toLowerCase(),
+    };
+  }
+
   return toast.warning(notification.title, customData || notification.data);
+};
+
+export const catchHookException = (error: unknown, customData?: ExternalToast) => {
+  catchException(error, customData);
+  return null;
+};
+
+export const catchHookExceptionAsWarning = (error: unknown, customData?: ExternalToast) => {
+  catchExceptionAsWarning(error, customData);
+  return null;
+};
+
+export const catchFormException = (error: unknown, customData?: ExternalToast) => {
+  catchException(error, customData);
+  return error;
+};
+
+export const catchable = <T, V>(tryMethod: () => T, exceptionCatcher: (error: unknown) => V) => {
+  try {
+    return tryMethod();
+  } catch (error) {
+    return exceptionCatcher(error);
+  }
 };
