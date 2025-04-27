@@ -8,4 +8,6 @@ export const refetchInterval = 5000;
 export const userKeys = {
   find: () => ["users"],
   findOne: (id: string) => ["users", id],
+  me: () => ["users", "me"],
+  meDetails: () => ["users", "me", "details"],
 };
