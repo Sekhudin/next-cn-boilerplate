@@ -1,4 +1,4 @@
-import { z, zz, createSchema, Dto } from "src/utils/validation.util";
+import { z, zz, createSchema, Dto } from "src/utils/validation";
 
 export const signInSchema = createSchema(
   z.object({

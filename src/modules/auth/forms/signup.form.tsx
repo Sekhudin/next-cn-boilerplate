@@ -4,9 +4,8 @@ import { Input } from "src/shared/ui/input";
 import { Button } from "src/shared/ui/button";
 import { PasswordInput } from "src/shared/ui/password-input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "src/shared/ui/form";
-import { authService } from "../services/auth.service";
 import { signUpSchema, signUpDefault, SignUpDto } from "../dto/signup.dto";
-import { schemaResolver, createOnSubmit } from "src/utils/form.util";
+import { schemaResolver, createOnSubmit } from "src/utils/form";
 import { cn, Props } from "src/utils/common";
 import { Anchor } from "src/shared/ui/anchor";
 
@@ -16,11 +15,8 @@ const SignUpForm = ({ className }: Props) => {
     defaultValues: signUpDefault,
   });
 
-  const onSubmit = createOnSubmit<SignUpDto>(async (values) => {
-    const payload = await authService.signUp(values);
-    if (payload) {
-      window.location.href = "/signin";
-    }
+  const onSubmit = createOnSubmit<SignUpDto>(async () => {
+
   });
 
   return (

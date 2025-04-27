@@ -12,17 +12,11 @@ import {
   AlertDialogTrigger,
 } from "src/shared/ui/alert-dialog";
 import { Button, ButtonProps } from "src/shared/ui/button";
+import { useAuth } from "src/modules/auth/hooks/use-auth.hook";
 import { cn } from "src/utils/common";
-import { authService } from "../../services/auth.service";
-import useAsync from "src/shared/hooks/use-async.hook";
 
 const SignOutButton = ({ className, ...props }: Omit<ButtonProps, "children" | "onClick">) => {
-  const signOut = useAsync(async () => {
-    const payload = await authService.signOut();
-    if (payload) {
-      window.location.href = "/signin";
-    }
-  });
+  const auth = useAuth();
 
   return (
     <AlertDialog>
@@ -42,8 +36,8 @@ const SignOutButton = ({ className, ...props }: Omit<ButtonProps, "children" | "
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className="bg-destructive hover:bg-destructive/90"
-            onClick={signOut.handler}
-            disabled={signOut.loading}
+            onClick={auth.signOut.handler}
+            disabled={auth.signOut.loading}
           >
             Sign Out
           </AlertDialogAction>

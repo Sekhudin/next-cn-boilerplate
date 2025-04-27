@@ -1,4 +1,4 @@
-import { z, zz, createSchema, Dto } from "src/utils/validation.util";
+import { z, zz, createSchema, Dto } from "src/utils/validation";
 
 export const signUpSchema = createSchema(
   z
@@ -9,7 +9,7 @@ export const signUpSchema = createSchema(
       confirmPassword: z.string(),
     })
     .superRefine(
-      zz.superRefineShouldMatch("confirmPassword", "password", {
+      zz.refineMatch("confirmPassword", "password", {
         message: "confirm password do not match!",
       }),
     ),

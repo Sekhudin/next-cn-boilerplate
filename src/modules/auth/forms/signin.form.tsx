@@ -1,14 +1,16 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { KeyRound } from "lucide-react";
 import { Input } from "src/shared/ui/input";
 import { Button } from "src/shared/ui/button";
 import { Anchor } from "src/shared/ui/anchor";
+import { LinkButton } from "src/shared/ui/link-button";
 import { PasswordInput } from "src/shared/ui/password-input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "src/shared/ui/form";
-import { authService } from "../services/auth.service";
 import { signInSchema, signInDefault, SignInDto } from "../dto/signin.dto";
-import { schemaResolver, createOnSubmit } from "src/utils/form.util";
+import { schemaResolver, createOnSubmit } from "src/utils/form";
 import { cn, Props } from "src/utils/common";
+import * as env from "src/configs/env.config";
 
 const SignInForm = ({ className }: Props) => {
   const form = useForm<SignInDto>({
@@ -16,11 +18,7 @@ const SignInForm = ({ className }: Props) => {
     defaultValues: signInDefault,
   });
 
-  const onSubmit = createOnSubmit<SignInDto>(async (values) => {
-    const payload = await authService.signIn(values);
-    if (payload) {
-      window.location.href = "/dashboard";
-    }
+  const onSubmit = createOnSubmit<SignInDto>(async () => {
   });
 
   return (
@@ -71,10 +69,11 @@ const SignInForm = ({ className }: Props) => {
             Or continue with
           </span>
         </div>
-        <Button className="w-full" variant="outline">
-          <span>X</span>
-          Login with Other
-        </Button>
+
+        <LinkButton className="w-full" href={env.client.SSO_LOGIN_URL} variant="outline">
+          <KeyRound />
+          Sign In with SSO
+        </LinkButton>
 
         <div className="text-center text-sm">
           Don&apos;t have an account? <Anchor href="/signup">Sign up</Anchor>

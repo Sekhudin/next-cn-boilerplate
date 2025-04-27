@@ -1,13 +1,17 @@
 import type { AxiosInstance } from "axios";
-import { ClientService } from "src/shared/core/client.service";
-import type { SignUpDto } from "../dto/signup.dto";
-import type { SignInDto } from "../dto/signin.dto";
+import { BaseService } from "src/shared/core/base.service";
+import { SignUpDto } from "src/modules/auth/dto/signup.dto";
+import { SignInDto } from "src/modules/auth/dto/signin.dto";
 import * as backend from "src/shared/clients/backend.client";
 
-class AuthService extends ClientService {
+class AuthService extends BaseService {
   public readonly client: AxiosInstance = backend.client;
   constructor() {
     super();
+  }
+
+  async me() {
+    return true;
   }
 
   async signUp(body: SignUpDto) {
@@ -19,7 +23,7 @@ class AuthService extends ClientService {
   }
 
   async signOut() {
-    return await this.client.get("/signout");
+    return true;
   }
 }
 
