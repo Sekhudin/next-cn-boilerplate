@@ -1,7 +1,9 @@
 import type React from "react";
+import type { ZodIssue } from "zod";
 import type { ExternalToast } from "sonner";
 import type { LucideIcon } from "lucide-react";
 import type { Metadata, ResolvingMetadata } from "next";
+import type { StandardSchemaV1 } from "@standard-schema/spec";
 import type { NextFont, NextFontWithVariable } from "next/dist/compiled/@next/font";
 
 export type Font = NextFont | NextFontWithVariable;
@@ -44,8 +46,18 @@ export type SidebarGroupMenu = {
   icon?: LucideIcon;
   url?: string;
   isActive?: boolean;
-  items?: (Required<
-    Omit<SidebarGroupMenu[number], "id" | "icon" | "isActive" | "items" | "url">
-  > &
+  items?: (Required<Omit<SidebarGroupMenu[number], "id" | "icon" | "isActive" | "items" | "url">> &
     Pick<SidebarGroupMenu[number], "id" | "items" | "url" | "icon">)[];
 }[];
+
+export type Dto<Schema extends StandardSchemaV1> = StandardSchemaV1.InferInput<Schema>;
+export type ErrorMessage = {
+  message: string;
+  errors: Pick<ZodIssue, "path" | "message">[] | null;
+};
+
+export type UseFormOptions<T> = {
+  onSuccess?: (value: T) => void;
+};
+
+export type { StandardSchemaV1 };
